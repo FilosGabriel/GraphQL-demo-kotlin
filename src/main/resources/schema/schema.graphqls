@@ -1,0 +1,36 @@
+type Query{
+    user(id:ID!):User
+    all:[User]
+}
+
+
+type Mutation{
+    addPosts(id:ID!,postInput:CreatePost):User
+}
+
+input CreatePost{
+    title:String!
+    content:String
+}
+
+type User{
+    id:ID!
+    name:String!
+    address:Adress
+    birthday:String
+    posts(size:Int=3):[Post]!
+    followers(size:Int=3):[User]
+}
+
+type Adress{
+    zip:String
+    country:String
+}
+
+type Post{
+    id:ID!
+    title:String!
+    content:String
+    comments:[String!]!
+}
+
